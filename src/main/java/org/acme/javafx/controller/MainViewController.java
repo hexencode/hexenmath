@@ -53,13 +53,13 @@ public class MainViewController implements Initializable {
     }
 
     @FXML
-    private void handleExitButtonClicked(ActionEvent event) {
+    public void handleExitButtonClicked(ActionEvent event) {
         Platform.exit();
         event.consume();
     }
 
     @FXML
-    private void handleGitButtonClicked(ActionEvent event) {
+    public void handleGitButtonClicked(ActionEvent event) {
         new Application() {
             @Override
             public void start(Stage stage) {

@@ -1,4 +1,4 @@
-package org.acme.javafx.view;
+package org.acme.javafx.conf;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +15,7 @@ import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import java.net.URL;
 
-public class App {
+public class FXSceneInitializer {
 
     @Inject
     FXMLLoader fxmlLoader;

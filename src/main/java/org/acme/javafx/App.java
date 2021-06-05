@@ -1,15 +1,16 @@
-package org.acme.javafx.conf;
+package org.acme.javafx;
 
 import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
 import javafx.application.Application;
+import org.acme.javafx.conf.FxApplication;
 
 @QuarkusMain
-public class CDIApplication implements QuarkusApplication {
+public class App implements QuarkusApplication {
 
     public static void main(String[] args) {
-        Quarkus.run(CDIApplication.class);
+        Quarkus.run(App.class);
     }
 
     @Override
