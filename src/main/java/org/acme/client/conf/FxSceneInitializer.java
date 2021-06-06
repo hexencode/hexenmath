@@ -1,4 +1,4 @@
-package org.acme.javafx.conf;
+package org.acme.client.conf;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,13 +9,13 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import lombok.SneakyThrows;
-import org.acme.javafx.conf.StartupScene;
+import org.acme.client.event.FxApplicationStarted;
 
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import java.net.URL;
 
-public class FXSceneInitializer {
+public class FxSceneInitializer {
 
     @Inject
     FXMLLoader fxmlLoader;
@@ -24,7 +24,7 @@ public class FXSceneInitializer {
     private double yOffset;
 
     @SneakyThrows
-    public void start(@Observes @StartupScene Stage primaryStage) {
+    public void start(@Observes @FxApplicationStarted Stage primaryStage) {
         URL fxml = getClass().getResource("/fxml/MainView.fxml");
         Parent root = fxmlLoader.load(fxml.openStream());
 

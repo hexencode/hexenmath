@@ -1,4 +1,4 @@
-package org.acme.javafx.conf;
+package org.acme.client.conf;
 
 import javafx.fxml.FXMLLoader;
 

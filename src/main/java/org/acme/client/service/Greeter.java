@@ -1,4 +1,4 @@
-package org.acme.javafx.service;
+package org.acme.client.service;
 
 import io.smallrye.mutiny.Uni;
 
