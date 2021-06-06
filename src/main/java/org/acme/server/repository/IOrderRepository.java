@@ -1,8 +1,8 @@
-package org.acme.server.service;
+package org.acme.server.repository;
 
 import io.smallrye.mutiny.Multi;
 import org.acme.server.model.Order;
 
-public interface IOrderService {
+public abstract interface IOrderRepository {
     Multi<Order> findOrders();
 }

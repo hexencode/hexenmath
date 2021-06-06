@@ -5,17 +5,15 @@
     <artifactId>hexenmath</artifactId>
     <version>1.0</version>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <quarkus.version>2.0.0.CR3</quarkus.version>
         <java.version>15</java.version>
         <javafx.version>16</javafx.version>
-        <rxjavafx.version>2.2.2</rxjavafx.version>
-        <rxjava.version>2.2.21</rxjava.version>
         <lombok.version>1.18.20</lombok.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
         <javafx-maven-plugin.version>0.0.6</javafx-maven-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
@@ -51,20 +49,6 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-mutiny</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.smallrye.reactive</groupId>
-            <artifactId>mutiny-rxjava</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.reactivex.rxjava2</groupId>
-            <artifactId>rxjavafx</artifactId>
-            <version>${rxjavafx.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.reactivex.rxjava2</groupId>
-            <artifactId>rxjava</artifactId>
-            <version>${rxjava.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
