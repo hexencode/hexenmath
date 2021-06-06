@@ -2,8 +2,6 @@ package org.acme.client.controller;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,7 +9,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
-import org.acme.client.model.FxOrder;
+import org.acme.client.observable.ObservableOrderList;
+import org.acme.client.observable.dto.ObservableOrder;
 import org.acme.server.service.IOrderService;
 
 import javax.inject.Inject;
@@ -23,22 +22,23 @@ import java.util.ResourceBundle;
 @Singleton
 public class MainViewController implements Initializable {
 
-    private final ObservableList<FxOrder> orderObservableList = FXCollections.observableArrayList();
-
-    public TableView<FxOrder> exampleTable;
-    public TableColumn<FxOrder, Integer> orderIdColumn;
-    public TableColumn<FxOrder, String> stateColumn;
-    public TableColumn<FxOrder, String> cityColumn;
+    public TableView<ObservableOrder> table;
+    public TableColumn<ObservableOrder, Integer> orderIdColumn;
+    public TableColumn<ObservableOrder, String> stateColumn;
+    public TableColumn<ObservableOrder, String> cityColumn;
 
     @Inject
     IOrderService orderService;
+
+    @Inject
+    ObservableOrderList<ObservableOrder> observableOrders;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         orderIdColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         stateColumn.setCellValueFactory(cellData -> cellData.getValue().stateProperty());
         cityColumn.setCellValueFactory(cellData -> cellData.getValue().cityProperty());
-        exampleTable.setItems(orderObservableList);
+        table.setItems(observableOrders.getOrders());
     }
 
     @FXML
@@ -62,13 +62,9 @@ public class MainViewController implements Initializable {
         log.info("Searching for orders started");
         orderService.findOrders()
                 .subscribe()
-                .with(item -> {
-                            log.debug("found Order#" + item.getId());
-                            orderObservableList.add(new FxOrder(item));
-                        },
+                .with(order -> observableOrders.addOrder(new ObservableOrder(order)),
                         failure -> log.error("TODO: Handle Error " + failure),
-                        () -> log.info("Searching for orders completed")
-                );
+                        () -> log.info("Searching for orders completed"));
 
         event.consume();
     }

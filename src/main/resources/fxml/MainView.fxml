@@ -24,7 +24,7 @@
                 </HBox>
             </HBox>
             <VBox>
-                <TableView fx:id="exampleTable">
+                <TableView fx:id="table">
                     <columns>
                         <TableColumn fx:id="orderIdColumn" editable="false" text="OrderId" />
                         <TableColumn editable="false" text="Location">

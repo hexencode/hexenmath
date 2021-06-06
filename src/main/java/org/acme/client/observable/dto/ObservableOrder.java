@@ -1,4 +1,4 @@
-package org.acme.client.model;
+package org.acme.client.observable.dto;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -6,12 +6,12 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import org.acme.server.model.Order;
 
-public class FxOrder {
+public class ObservableOrder {
     IntegerProperty id;
     StringProperty state;
     StringProperty city;
 
-    public FxOrder(Order order) {
+    public ObservableOrder(Order order) {
         this.id = new SimpleIntegerProperty(order.getId());
         this.state = new SimpleStringProperty(order.getState());
         this.city = new SimpleStringProperty(order.getCity());
