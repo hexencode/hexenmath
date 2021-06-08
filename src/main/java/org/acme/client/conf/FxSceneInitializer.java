@@ -25,7 +25,7 @@ public class FxSceneInitializer {
 
     @SneakyThrows
     public void start(@Observes @FxApplicationStarted Stage primaryStage) {
-        URL fxml = getClass().getResource("/fxml/MainView.fxml");
+        URL fxml = getClass().getResource("/MainView.fxml");
         Parent root = fxmlLoader.load(fxml.openStream());
 
         root.setOnMousePressed(event -> {
