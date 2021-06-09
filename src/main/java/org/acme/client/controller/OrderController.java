@@ -2,6 +2,7 @@ package org.acme.client.controller;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,8 +12,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
-import org.acme.client.html.HTMLController;
 import org.acme.client.html.HTMLLoader;
+import org.acme.client.html.OrderHTMLController;
 import org.acme.client.observable.ObservableOrderList;
 import org.acme.client.observable.dto.ObservableOrder;
 import org.acme.server.service.IOrderService;
@@ -24,7 +25,7 @@ import java.util.ResourceBundle;
 
 @Slf4j
 @Singleton
-public class MainViewController implements Initializable {
+public class OrderController implements Initializable {
 
     @FXML
     public TableView<ObservableOrder> table;
@@ -45,7 +46,7 @@ public class MainViewController implements Initializable {
     IOrderService orderService;
 
     @Inject
-    ObservableOrderList<ObservableOrder> observableOrders;
+    ObservableOrderList observableOrders;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -54,7 +55,7 @@ public class MainViewController implements Initializable {
         cityColumn.setCellValueFactory(cellData -> cellData.getValue().cityProperty());
         table.setItems(observableOrders.getOrders());
 
-        WebView webView = HTMLLoader.load(getClass().getResource("/html/view.html"), new HTMLController());
+        WebView webView = HTMLLoader.load(getClass().getResource("/html/view.html"), new OrderHTMLController(observableOrders));
         rightPane.getChildren().add(webView);
     }
 

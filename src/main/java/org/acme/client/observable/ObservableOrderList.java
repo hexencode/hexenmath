@@ -5,23 +5,24 @@ import javafx.collections.ObservableList;
 import lombok.extern.slf4j.Slf4j;
 import org.acme.client.observable.dto.ObservableOrder;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Singleton;
 
 @Slf4j
 @Singleton
-public class ObservableOrderList<T extends ObservableOrder> {
+public class ObservableOrderList {
 
-    private final ObservableList<T> orders;
+    private final ObservableList<ObservableOrder> orders;
 
     public ObservableOrderList() {
         orders = FXCollections.observableArrayList();
     }
 
-    public ObservableList<T> getOrders() {
+    public ObservableList<ObservableOrder> getOrders() {
         return orders;
     }
 
-    public void addOrder(T order) {
+    public void addOrder(ObservableOrder order) {
         log.info("adding Order#" + order.getId());
         orders.add(order);
     }

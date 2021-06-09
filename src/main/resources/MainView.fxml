@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <BorderPane prefHeight="400.0" prefWidth="842.0" styleClass="shadow-pane" stylesheets="@fxml/application.css"
             xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.acme.client.controller.MainViewController">
+            fx:controller="org.acme.client.controller.OrderController">
     <center>
         <VBox id="dragTarget" spacing="10" styleClass="background-pane">
             <HBox alignment="CENTER">

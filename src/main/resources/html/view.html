@@ -1,45 +1,17 @@
 <html>
-<head><title>TODO supply a title</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initialscale=1.0">
-    <style> html, body {
-        height: 100%;
-    }
-
-    body {
-        margin: 0;
-    }
-
-    .flex-container {
-        height: 100%;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .row {
-        width: auto;
-    }
-
-    .flex-item {
-        padding: 5px;
-        margin: 10px;
-        line-height: 20px;
-        font-weight: bold;
-        font-size: 2em;
-        text-align: center;
-    }</style>
+<head>
+    <title>Todo List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-<div class="flex-container">
-    <div class="row">
-        <div class="flex-item"><span data-bind="text: labelText"></span></div>
-        <div class="flex-item">
-            <button data-bind="click: action">Click me!</button>
-        </div>
-    </div>
-</div>
+<input data-bind="textInput: input"/>
+<button data-bind="click: add">add</button>
+<br>
+<ul data-bind="foreach: todos">
+    <li>
+        <span data-bind="text: message"></span>
+        (<a href="#" data-bind="click: $root.remove">remove</a>)
+    </li>
+</ul>
 </body>
 </html>
